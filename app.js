@@ -1,22 +1,62 @@
-// const fs=require('fs')
+const yargs = require("yargs")
+const { addNote, getNotes, removeNote, getSingleNote } = require("./notes")
 
-// fs.writeFileSync('notes.txt','Notes file text')
+yargs.command({
+    command:'add',
+    describe:'Add a new note',
+    builder:{
+        title:{
+            describe:'Note title',
+            demandOption:true,
+            type:'string'
+        },
+        body:{
+            describe:'Note body',
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler(argv){
+        addNote(argv.title,argv.body)
+    }
+})
 
-// fs.appendFileSync('notes.txt','New appended line')
+yargs.command({
+    command:'remove',
+    describe:'Removing a note',
+    builder:{
+        title:{
+            describe:'Note title',
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler(argv){
+        removeNote(argv.title)
+    }
+})
 
-// const addFunc=require('./utils')
+yargs.command({
+    command:'list',
+    describe:'Listing notes',
+    builder:{
+        title:{
+            describe:'Note title',
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler(){
+        getNotes()
+    }
+})
 
-// console.log('sum',addFunc(2,3))
+yargs.command({
+    command:'read',
+    describe:'Reading notes',
+    handler(argv){
+       getSingleNote(argv.title)
+    }
+})
 
-// const getNotes=require('./notes')
-
-// console.log(getNotes())
-
-// const validator=require('validator')
-
-// console.log(validator.isEmail('ram@gmail.com'))
-
-import chalk from 'chalk'
-
-const success=chalk.bold.green
-console.log(success('success text from chalk'))
+console.log(yargs.parse())
