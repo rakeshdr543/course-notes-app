@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.js\" \"test/**/*.ts\"",
     "start": "nodemon app.js"
   },
   "keywords": [],
@@ -12,9 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.4.1",
+    "prettier": "^2.5.1",
     "validator": "^13.7.0",
-    "yargs": "^17.3.0",
-    "prettier": "^2.3.2"
+    "yargs": "^17.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
